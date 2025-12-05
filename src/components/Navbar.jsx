@@ -40,7 +40,7 @@ const Navbar = () => {
             </ul>   
             <div className="icon group flex justify-end  items-center">
                 <img src={assets.search_icon} onClick={handleSearchicon} className={`fa-solid fa-magnifying-glass text-2xl text-black me-5`}></img>
-                {{showMenu ?<img src={assets.cross_icon} onClick={()=>setShowMenu(false)} className={`fa-solid fa-xmark md:hidden text-2xl text-black me-5`}></img> :<img src={assets.menu_icon} onClick={()=>setShowMenu(true)} alt="close menu" className="w-6 h-6 md:hidden me-5 cursor-pointer" />   }
+                {showMenu ?<img src={assets.cross_icon} onClick={()=>setShowMenu(false)} className={`fa-solid fa-xmark md:hidden text-2xl text-black me-5`}></img> :<img src={assets.menu_icon} onClick={()=>setShowMenu(true)} alt="close menu" className="w-6 h-6 md:hidden me-5 cursor-pointer" />   }
             </div>             
         </section>
     </nav>
