@@ -8,9 +8,11 @@ import Contact from "./pages/contact.jsx"
 import Home from "./pages/home.jsx"
 import Title from "./components/title.jsx"
 import AllCollections from "./pages/allcollections.jsx"
+import Footer from "./components/Footer.jsx"
 function App() {
   return (
     <>
+    <div>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
@@ -18,6 +20,8 @@ function App() {
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/about" element={<About />}></Route>
       </Routes>
+      <Footer />
+    </div>
     </>
 
   )

@@ -19,7 +19,7 @@ function LatestCollection() {
   return (
     <>
     <Title text1="LATEST" text2="COLLECTION" />
-    <section className="container section product-section w-full mx-auto ">
+    <section className="container section p-3 product-section w-full mx-auto ">
         <main className="products-div flex grid grid-cols-2 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 gap-4  ">
             
             {/* <h1>Products</h1> */}
