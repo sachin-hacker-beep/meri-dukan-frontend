@@ -15,7 +15,7 @@ const Navbar = () => {
     return (
         <>
     <nav className='sticky top-0 z-50 bg-[#fac5c5] md:bg-white shadow-md'>
-        <section className='nav1  h-full px-3 logo-div relative  flex justify-between items-center  font-medium'>
+        <section className='nav1 h-full px-3 py-4 md:py-2 logo-div relative  flex justify-between items-center  font-medium'>
             <div className=" nav1-logo flex justify-start items-center ps-5">
                 <img className='w-36' src={assets.logo} alt="Logo" />
             </div>
