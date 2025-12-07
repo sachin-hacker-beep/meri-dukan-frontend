@@ -30,7 +30,7 @@ function Bestseller() {
   return (
     <>
     <Title text1="OUR"  text2="BESTSELLER" />
-    <section className="container section product-section w-full mx-auto ">
+    <section className="container section product-section p-3 w-full mx-auto ">
         <main className="products-div flex grid grid-cols-2 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 gap-4  ">
             {bestsell ? bestsell.map((product)=>(
 

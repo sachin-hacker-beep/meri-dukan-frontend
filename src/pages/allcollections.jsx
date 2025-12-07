@@ -66,41 +66,41 @@ function AllCollections() {
       <Title text1="OUR" text2="COLLECTION" />
       <section className='overflow-hidden container flex-col md:flex-row flex justify-between  mx-auto '>
         <div className='filter-section mb-5 md:mb-0 px-2 flex justify-evenly md:justify-start  md:flex-col  gap-y-3 '>
-          <div className=" filter-left-category border p-3">
+          <div className=" filter-left-category border p-1">
             <h1 className='text-sm mb-2 font-semibold text-gray-700'>Category</h1>
-            <div className='flex gap-3'>
+            <div className='flex gap-1'>
               <input type="checkbox" value={'Men'} onChange={handleCategory} className='w-3' id='Male'/>
-              <label htmlFor="Male" className='text-sm text-gray-600'>Male</label>
+              <label htmlFor="Male" className='text-xs sm:text-sm text-gray-600'>Male</label>
             </div>
-            <div className='flex gap-3'>
+            <div className='flex gap-1'>
               <input type="checkbox" value={'Women'} onChange={handleCategory} className='w-3' id='Female'/>
-              <label htmlFor="Female"  className='text-sm text-gray-600'>Female</label>
+              <label htmlFor="Female"  className='text-xs sm:text-sm text-gray-600'>Female</label>
             </div>
-            <div className='flex gap-3'>
+            <div className='flex gap-1'>
               <input type="checkbox" value={'Kids'} onChange={handleCategory} className='w-3' id='Kid'/>
-              <label htmlFor="Kid" className='text-sm text-gray-600'>Kid</label>
+              <label htmlFor="Kid" className='text-xs sm:text-sm text-gray-600'>Kid</label>
             </div>
           </div>
-          <div className=" filter-left-Subcategory border p-3">
+          <div className=" filter-left-Subcategory border p-1">
             <h1 className='text-sm mb-2 font-semibold text-gray-700'>Type</h1>
-            <div className='flex gap-3'>
+            <div className='flex gap-1'>
               <input type="checkbox" value={'Topwear'} onChange={handleSubCategory} className='w-3' id='Topwear'/>
-              <label htmlFor="Topwear" className='text-sm text-gray-600'>Topwear</label>
+              <label htmlFor="Topwear" className='text-xs sm:text-sm text-gray-600'>Topwear</label>
             </div>
-            <div className='flex gap-3'>
+            <div className='flex gap-1'>
               <input type="checkbox" value={'Bottomwear'} onChange={handleSubCategory} className='w-3' id='Bottomwear'/>
-              <label htmlFor="Bottomwear"  className='text-sm text-gray-600'>Bottomwear</label>
+              <label htmlFor="Bottomwear"  className='text-xs sm:text-sm text-gray-600'>Bottomwear</label>
             </div>
-            <div className='flex gap-3'>
+            <div className='flex gap-1'>
               <input type="checkbox" value={'Winterwear'} onChange={handleSubCategory} className='w-3' id='Winterwear'/>
-              <label htmlFor="Winterwear" className='text-sm text-gray-600'>Winterwear</label>
+              <label htmlFor="Winterwear" className=' text-xs sm:text-sm text-gray-600'>Winterwear</label>
             </div>
           </div>
-          <div className="filter-right flex flex-col border p-3">
+          <div className="filter-right flex flex-col border p-1">
             <h1 className='text-sm mb-2 font-semibold text-gray-700'> Sort By Price</h1>
-            <div className="flex">
-              <select onChange={(e)=>setSortType(e.target.value)} name="select-price" className="outline-none bg-white text-sm text-gray-600" id="select-price">
-                <option value="Relevant">Sort By Relevant</option>
+            <div className="flex text-xs">
+              <select style={{fontSize:"12px"}} onChange={(e)=>setSortType(e.target.value)} name="select-price" className="outline-none bg-white text-sm text-gray-600" id="select-price">
+                <option style={{fontSize:"12px"}} value="Relevant">Sort By Relevant</option>
                 <option value="Low-High">Low to High</option>
                 <option value="High-Low">High to Low</option>
               </select>
