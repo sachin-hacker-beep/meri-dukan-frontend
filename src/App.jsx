@@ -9,6 +9,7 @@ import Home from "./pages/home.jsx"
 import Title from "./components/title.jsx"
 import AllCollections from "./pages/allcollections.jsx"
 import Footer from "./components/Footer.jsx"
+import ProductPage from "./components/productPage.jsx"
 function App() {
   return (
     <>
@@ -19,6 +20,7 @@ function App() {
         <Route path="/collections" element={<AllCollections />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/about" element={<About />}></Route>
+        <Route path="/product/:id" element={<ProductPage />}></Route>
       </Routes>
       <Footer />
     </div>

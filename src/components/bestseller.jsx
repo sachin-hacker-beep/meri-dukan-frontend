@@ -33,7 +33,6 @@ function Bestseller() {
     <section className="container section product-section p-3 w-full mx-auto ">
         <main className="products-div flex grid grid-cols-2 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 gap-4  ">
             {bestsell ? bestsell.map((product)=>(
-
                 <ProductCard key={product._id} product={product} assets={assets} />
             )) : <h1>NO Products Available</h1> }
         </main>
