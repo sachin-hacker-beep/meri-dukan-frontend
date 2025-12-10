@@ -4,6 +4,7 @@ export const ShopContextProvider = ({children}) => {
     const [products,setProducts] = useState([]);
     const [show, setShow] = useState(false);
     const [search, setSearch] = useState("");
+    const [size, setSize] = useState("");
     useEffect(()=>{
         const fetchProduct = async ()=>{
             try{
@@ -19,7 +20,7 @@ export const ShopContextProvider = ({children}) => {
     }, []);
     
     return(
-        <ShopContext.Provider value={{products, show, setShow, search, setSearch}}>
+        <ShopContext.Provider value={{products, show, setShow, search, setSearch, size, setSize}}>
             {children}
         </ShopContext.Provider>
     )
