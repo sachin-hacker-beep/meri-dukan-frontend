@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useProduct } from '../context/shopContext'
 import { useParams } from 'react-router-dom';
 import { assets } from '../assets/assets';
+import Related from './related';
 
 function ProductPage() {
     const {products, size, setSize} = useProduct();
@@ -52,7 +53,7 @@ function ProductPage() {
               <img src={assets.star_dull_icon} alt="Rating" className='w-4 '/>
             </div>
             <p className='text-lg font-medium mt-6 mt-3 text-gray-700'>Price: &#8377; {fetchProduct.price}</p>
-            <p className='text-md font-normal mt-6 text-gray-600'>{fetchProduct.description}</p>
+            <p className='text-sm md:text-md  font-normal mt-6 text-gray-600'>{fetchProduct.description}</p>
               <p className='text-gray-800 mt-10'>Select Sizes :-</p>
             <figure className='flex flex-col gap-2 gap-x-3 mt-3 gap-y-10 md:gap-y-16'>
               <div className="sizes-div flex gap-2 gap-x-3 items-center">
@@ -69,9 +70,8 @@ function ProductPage() {
         </div>
         
        </section>
-
-
       </section> 
+      <Related Category={fetchProduct.category} subCategory={fetchProduct.subcategory} />
     </>
   )
 }

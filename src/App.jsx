@@ -10,10 +10,12 @@ import Title from "./components/title.jsx"
 import AllCollections from "./pages/allcollections.jsx"
 import Footer from "./components/Footer.jsx"
 import ProductPage from "./components/productPage.jsx"
+import ScrollToTop from "./components/ScrollToTop.jsx"
 function App() {
   return (
     <>
     <div>
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
