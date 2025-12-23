@@ -21,7 +21,7 @@ function ProductPage() {
     if(!fetchProduct){
       return <p className="text-center text-gray-700 font-semibold text-lg">product not found</p>
     }
-    const handleAddtoCart = ()=>{git
+    const handleAddtoCart = ()=>{
       if(!selectedSize) {
         alert("Please Select a Size");
         return;
