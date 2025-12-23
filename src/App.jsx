@@ -11,6 +11,7 @@ import AllCollections from "./pages/allcollections.jsx"
 import Footer from "./components/Footer.jsx"
 import ProductPage from "./components/productPage.jsx"
 import ScrollToTop from "./components/ScrollToTop.jsx"
+import Cart from "./components/cart.jsx"
 function App() {
   return (
     <>
@@ -23,6 +24,7 @@ function App() {
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/product/:id" element={<ProductPage />}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
       </Routes>
       <Footer />
     </div>

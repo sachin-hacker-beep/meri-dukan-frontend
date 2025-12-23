@@ -6,7 +6,8 @@ import { assets } from '../assets/assets';
 import Related from './related';
 
 function ProductPage() {
-    const {products, size, setSize} = useProduct();
+    const {products, AddToCart} = useProduct();
+    const [selectedSize, setSelectedSize] = useState("");
     const {id} = useParams();
     const fetchProduct = products.find((item)=>item._id === id);
     const [mainImage, setmainImage] = useState("");
@@ -18,14 +19,19 @@ function ProductPage() {
       
     }, [fetchProduct])
     if(!fetchProduct){
-      return console.log("product not found");
+      return <p className="text-center text-gray-700 font-semibold text-lg">product not found</p>
     }
-    const selectSize = (item)=>{
-      setSize(item);      
+    const handleAddtoCart = ()=>{
+      if(!selectedSize) {
+        alert("Please Select a Size");
+        return;
+      }
+      console.log("Adding to cart:", selectedSize); 
+      AddToCart(fetchProduct, selectedSize);
     }
     // console.log(fetchProduct);
     
-  return (
+  return (  
     <>
     <section className='container flex mx-auto w-full '>
        <section className='flex flex-col lg:flex-row mt-2 md:p-5 mx-auto ' >
@@ -39,7 +45,7 @@ function ProductPage() {
                   })
                 }
             </div>
-            <div className="main-image-div flex-1 w-full  sm:p-0  md:w-[100%] lg:w-[100%] ">
+            <div className="main-image-div flex-1 w-full sm:p-0  md:w-[100%] lg:w-[100%] ">
               <img src={mainImage} alt="hiii guysss " className=' w-full md:w-[100%] lg:w-[100%] h-auto' />
             </div>
         </div>
@@ -60,12 +66,13 @@ function ProductPage() {
               {
                 fetchProduct.sizes?.map((item, index)=>{
                   return(
-                    <button onClick={()=> selectSize(item)} key={index} className={`border bg-gray-200  text-gray-700 py-2 px-4 ${item === size ? "bg-[#f8b9b9]" : ""} hover:bg-[#f8b9b9] active:bg-[#fac5c5] h-auto rounded`}> {item}</button>
+                    <button onClick={()=> setSelectedSize(item)} key={index} className={`border bg-gray-200  text-gray-700 py-2 px-4 ${item === selectedSize ? "bg-[#f8b9b9]" : ""} hover:bg-[#f8b9b9] active:bg-[#fac5c5] h-auto rounded`}> {item}</button>
                   )
                 })
               }
+              <h1>{selectedSize}</h1>
               </div>
-              <button className=' bg-[#f8afaf] text-gray-700 hover:bg-[#f89c9c] text-white w-1/3 sm:w-1/2 py-2 inline text-center rounded '>Add to Cart</button>
+              <button onClick={handleAddtoCart} className=' bg-[#f8afaf] text-gray-700 hover:bg-[#f89c9c] text-white w-1/3 sm:w-1/2 py-2 inline text-center rounded '>Add to Cart</button>
             </figure>
         </div>
         
