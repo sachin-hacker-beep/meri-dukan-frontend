@@ -28,6 +28,7 @@ function ProductPage() {
       }
       console.log("Adding to cart:", selectedSize); 
       AddToCart(fetchProduct, selectedSize);
+      // localStorage.setItem("cartData", JSON.stringify({cartProduct:{ ...fetchProduct, selectedSize}}) );
     }
     // console.log(fetchProduct);
     

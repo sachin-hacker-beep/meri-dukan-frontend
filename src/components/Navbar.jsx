@@ -8,14 +8,17 @@ const Navbar = () => {
     const navigate = useNavigate();
     const {setShow, cart} = useProduct();
     const [showMenu, setShowMenu] = useState(false);
-    const [cartcount, setCartcount] = useState(0);
+    const [cartCount, setCartCount] = useState(0);
+
+    useEffect(() => {
+        const count = cart.reduce((total, item) => total + Number(item.quantity || 0), 0);
+        setCartCount(count);
+    }, [cart]);  
     const handleSearchicon= () => {
         navigate('/collections')
         setShow(true)
     }
-    useEffect(()=>{
-        setCartcount(cart.length);
-    },[cart])
+    // const cartCount = cart.reduce((total,item)=>Number (total) + Number(item.quantity),0);
     return (
         <>
     <nav className='sticky top-0 z-50 bg-[#fac5c5] md:bg-white shadow-md'>
@@ -45,7 +48,7 @@ const Navbar = () => {
             <div className="icon group flex justify-end  items-center">
                 <img src={assets.search_icon} onClick={handleSearchicon} className={`w-5 fa-solid fa-magnifying-glass text-2xl text-black me-5`}></img> 
                 <Link onClick={()=> setShowMenu(false)} className='relative' to="/cart"><img  src={assets.cart_icon} alt="Cart" className='w-5 me-5 cursor-pointer' /> 
-                <span className='absolute top-3 right-3 bg-gray-700 text-white rounded-full  text-xs w-4 h-4 flex items-center justify-center'>{cartcount}</span></Link>
+                <span className='absolute top-3 right-3 bg-gray-700 text-white rounded-full  text-xs w-4 h-4 flex items-center justify-center'>{cartCount}</span></Link>
                 {showMenu ?<i onClick={()=>setShowMenu(false)} className={`fa-solid fa-xmark md:hidden text-2xl text-black me-5`}></i> :<img src={assets.menu_icon} onClick={()=>setShowMenu(true)} alt="close menu" className=" w-5 md:hidden me-5 cursor-pointer" />   }
                 
             </div>             
