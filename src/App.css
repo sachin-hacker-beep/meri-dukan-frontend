@@ -16,6 +16,16 @@
     .cart-details{
         justify-content: center;
         flex-direction: column;
+        align-items: center;
         gap: 1rem;
+    }
+    .cart-product-details{
+        font-size: 14px;
+    }
+    
+}
+@media (max-width: 350px) {
+    .cart-product-details{
+        font-size: 13px;
     }
 }

@@ -2,8 +2,8 @@ import { useProduct } from "../context/shopContext"
 function TotalPrice() {
     const {cart} = useProduct();
     let totalPrice=cart.reduce((total,item)=> total + (Number(item.price || 0) * Number(item.quantity || 0)), 0);
-    let Discount=`${totalPrice<500 ? 50 : totalPrice<1000 ? 100 : 150}`;
-    let deliveryFee=`${totalPrice<500 ? 40 : totalPrice<1000 ? 20 : 0}`;
+    let Discount=`${totalPrice === 0 ? 0 : totalPrice<500 ? 50 : totalPrice<1000 ? 100 : 150}`;
+    let deliveryFee=`${totalPrice === 0 ? 0 : totalPrice<500 ? 40 : totalPrice<1000 ? 20 : 0}`;
 
   return(
     <section className='w-full container mx-auto px-5 py-2 border'>
