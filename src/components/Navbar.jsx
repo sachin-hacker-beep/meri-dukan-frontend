@@ -7,6 +7,10 @@ import { useProduct } from '../context/shopContext.jsx';
 const Navbar = () => {
     const navigate = useNavigate();
     const {setShow, cart} = useProduct();
+    const [formPage, setFormPage] = useState(false);
+    const handleUser = () => {
+        navigate('/authcheck')
+    }
     const [showMenu, setShowMenu] = useState(false);
     const [cartCount, setCartCount] = useState(0);
 
@@ -21,7 +25,7 @@ const Navbar = () => {
     // const cartCount = cart.reduce((total,item)=>Number (total) + Number(item.quantity),0);
     return (
         <>
-    <nav className='sticky top-0 z-50 bg-[#fac5c5] md:bg-white shadow-md'>
+    <nav className='sticky top-0 z-50 bg-[#faa0a0] md:bg-white shadow-md'>
         <section className='nav1 h-full px-3 py-4 md:py-2 logo-div relative  flex justify-between items-center  font-medium'>
             <div className=" nav1-logo flex justify-start items-center ps-0 sm:ps-5">
                 <img className='w-28 sm:w-36' src={assets.logo} alt="Logo" />
@@ -49,6 +53,7 @@ const Navbar = () => {
                 <img src={assets.search_icon} onClick={handleSearchicon} className={`w-5 fa-solid fa-magnifying-glass text-2xl text-black me-5`}></img> 
                 <Link onClick={()=> setShowMenu(false)} className='relative' to="/cart"><img  src={assets.cart_icon} alt="Cart" className='w-5 me-5 cursor-pointer' /> 
                 <span className='absolute top-3 right-3 bg-gray-700 text-white rounded-full  text-xs w-4 h-4 flex items-center justify-center'>{cartCount}</span></Link>
+                <img src={assets.profile_icon} onClick={handleUser} className={`w-5 fa-solid fa-magnifying-glass text-2xl text-black me-5`}></img>
                 {showMenu ?<i onClick={()=>setShowMenu(false)} className={`fa-solid fa-xmark md:hidden text-2xl text-black me-5`}></i> :<img src={assets.menu_icon} onClick={()=>setShowMenu(true)} alt="close menu" className=" w-5 md:hidden me-5 cursor-pointer" />   }
                 
             </div>             
