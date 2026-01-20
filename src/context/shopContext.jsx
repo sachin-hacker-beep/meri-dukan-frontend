@@ -23,32 +23,53 @@ export const ShopContextProvider = ({children}) => {
         fetchProduct();
     }, []);
     
-    const AddToCart = (fetchProduct, selectedSize) =>{
-        if(!selectedSize){
-            alert("Please Select a Size")
+     const AddToCart = async (selectedSize) =>{
+         if(!selectedSize){
+             alert("Please Select a Size")
+         }
+        try{
+            const res = await fetch('https://meri-dukan-backend-2.onrender.com/add/${fetchProduct._id}',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({selectedSize}),
+            });
+            const data= res.json();
+            console.log("Add to cart response:", data);
         }
-        console.log(fetchProduct, selectedSize);
+        catch(error){
+            console.error("Error adding to cart:", error);
+            }
+
+
+        }
+    // const AddToCart = (fetchProduct, selectedSize) =>{
+    //     if(!selectedSize){
+    //         alert("Please Select a Size")
+    //     }
+    //     console.log(fetchProduct, selectedSize);
         
-        setCart((prev) =>{ 
-            const existingData = prev.find((item)=> item._id === fetchProduct._id && item.selectedSize === selectedSize);
-            if(existingData){
-                console.log(existingData);
+    //     setCart((prev) =>{ 
+    //         const existingData = prev.find((item)=> item._id === fetchProduct._id && item.selectedSize === selectedSize);
+    //         if(existingData){
+    //             console.log(existingData);
                 
-                return prev.map((item)=>{
-                    if(item._id === fetchProduct._id && item.selectedSize === selectedSize){
-                        return {...item, quantity: item.quantity + 1};
-                    }
-                    else{
-                        return {...item, quantity: item.quantity};
-                    }
-                });
-            }
-            else{
-                return [...prev, {...fetchProduct, quantity: 1, selectedSize: selectedSize}];
-            }
-        }
-    );    // console.log(cart);
-    }
+    //             return prev.map((item)=>{
+    //                 if(item._id === fetchProduct._id && item.selectedSize === selectedSize){
+    //                     return {...item, quantity: item.quantity + 1};
+    //                 }
+    //                 else{
+    //                     return {...item, quantity: item.quantity};
+    //                 }
+    //             });
+    //         }
+    //         else{
+    //             return [...prev, {...fetchProduct, quantity: 1, selectedSize: selectedSize}];
+    //         }
+    //     }
+    // );    // console.log(cart);
+    // }
     const handleRemove = (removingID, chosenSize) => {
   setCart(prev =>
     prev

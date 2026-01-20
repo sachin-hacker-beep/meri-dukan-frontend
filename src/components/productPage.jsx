@@ -16,18 +16,17 @@ function ProductPage() {
         setmainImage(assets[fetchProduct.image[0]]);
         
       }
-      
     }, [fetchProduct])
     if(!fetchProduct){
       return <p className="text-center text-gray-700 font-semibold text-lg">product not found</p>
     }
     const handleAddtoCart = ()=>{
       if(!selectedSize) {
-        alert("Please Select a Size");
+        alert("You have not Selected a Size");
         return;
-      }
+      }   
       console.log("Adding to cart:", selectedSize); 
-      AddToCart(fetchProduct, selectedSize);
+      AddToCart(selectedSize);
       // localStorage.setItem("cartData", JSON.stringify({cartProduct:{ ...fetchProduct, selectedSize}}) );
     }
     // console.log(fetchProduct);
