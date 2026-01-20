@@ -35,7 +35,7 @@ export const ShopContextProvider = ({children}) => {
                 },
                 body: JSON.stringify({selectedSize}),
             });
-            const data= res.json();
+            const data= await res.json();
             console.log("Add to cart response:", data);
         }
         catch(error){

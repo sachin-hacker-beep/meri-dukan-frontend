@@ -19,7 +19,7 @@ function Authcheck() {
     }
     const checkSignup = async()=>{
         try{
-            const res = await fetch('http://localhost:5000/User/SignUp',{
+            const res = await fetch('https://meri-dukan-backend-2.onrender.com/User/SignUp',{
                 method: 'post',
                 credentials: 'include',
                 headers:{  
@@ -58,7 +58,7 @@ function Authcheck() {
     }
     const checkSignin = async()=>{
         try{
-            const res = await fetch("http://localhost:5000/User/login",{
+            const res = await fetch("https://meri-dukan-backend-2.onrender.com/User/login",{
                 method:"post",
                 credentials: 'include',
                 headers:{
