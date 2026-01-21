@@ -24,7 +24,7 @@ function Authcheck() {
                     'Content-Type':'application/json'
                 },
                 body: JSON.stringify({
-                    username: signup.Username,
+                    username: signup.username,
                     email: signup.email,
                     password: signup.password 
                 })
