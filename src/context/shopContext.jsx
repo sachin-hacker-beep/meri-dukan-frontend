@@ -36,6 +36,12 @@ export const ShopContextProvider = ({children}) => {
                 body: JSON.stringify({selectedSize}),
             });
             const data= await res.json();
+            if(res.status === 200 || res.status === 201){
+                alert(data.message);
+            }
+            if(res.status === 400){
+                alert(data.message);
+            }
             console.log("Add to cart response:", data);
         }
         catch(error){
