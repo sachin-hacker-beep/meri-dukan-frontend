@@ -106,7 +106,7 @@ function Authcheck() {
                         
                     </form> 
                     :
-                    <form action="" key="signin" onSubmit={handleSignin} className='w-[90%] sm:w-[80%] md:w-[70%] lg:w-[70%] p-5 user-form rounded'>
+                    <form action="" key="signin" onSubmit={checkSignin} className='w-[90%] sm:w-[80%] md:w-[70%] lg:w-[70%] p-5 user-form rounded'>
                         <h3 className='text-center mb-4 text-gray-800 text-left text-3xl'>Sign In</h3>
                         <input type="email" name='email' value={signin.email} onChange={(e) => setSignin({...signin, email:e.target.value})} id="sign-email" className='placeholder:text-gray-800 mb-3 rounded-0' placeholder='Your Email' required />
 
@@ -115,7 +115,7 @@ function Authcheck() {
                             <i style={{right: '10px', top: '30%'}} onClick={() => setHide(!hide)} className={`text-gray-800 fa-solid ${hide? "fa-eye-slash": "fa-eye"} absolute top-5 right-2`}></i>
                         </div>    
 
-                        <button type="submit" onClick={checkSignin} className='mt-2 bg-[#f87777] py-1 px-3 rounded'>Sign In</button> <br />
+                        <button type="submit" className='mt-2 bg-[#f87777] py-1 px-3 rounded'>Sign In</button> <br />
                         <br /><a onClick={()=> setLogin(false)} className='text-gray-800 form-link underline' htmlFor="#">Don't have an account? Sign Up</a>
                         
                     </form>
