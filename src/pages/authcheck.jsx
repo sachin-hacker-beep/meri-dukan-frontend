@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom';
 function Authcheck() {
     const [login, setLogin] = useState(false);
     const [signup, setSignup] = useState({
-        Username:"",
+        username:"",
         email:"",
         password:""
     });
@@ -14,10 +14,8 @@ function Authcheck() {
     });
     const[hide, setHide] = useState(true);
     const navigate = useNavigate();
-    const handleSignup = (e)=>{
+    const checkSignup = async(e)=>{
         e.preventDefault();
-    }
-    const checkSignup = async()=>{
         try{
             const res = await fetch('https://meri-dukan-backend-2.onrender.com/User/SignUp',{
                 method: 'post',
@@ -35,7 +33,7 @@ function Authcheck() {
             if(res.status === 201){
                 alert(data.message);
                 setSignup({
-                    Username:"",
+                    username:"",
                     email:"",
                     password:""
                 })
@@ -53,10 +51,9 @@ function Authcheck() {
             console.log("Error during Signup", err);
         }
     }
-    const handleSignin =(e)=>{
+   
+    const checkSignin = async(e)=>{
         e.preventDefault();
-    }
-    const checkSignin = async()=>{
         try{
             const res = await fetch("https://meri-dukan-backend-2.onrender.com/User/login",{
                 method:"post",
@@ -95,15 +92,15 @@ function Authcheck() {
         <div className='d-flex justify-content-center '>
             <div className=' w-full py-4 d-flex w-100 justify-center items-center'>
                 <div className="flex justify-center border gap-4">
-                    {!login ? <form action="" onSubmit={handleSignup} key="signup" className='w-[90%] sm:w-[80%] md:w-[70%] lg:w-[70%] p-5 user-form rounded'>
+                    {!login ? <form action="" onSubmit={checkSignup} key="signup" className='w-[90%] sm:w-[80%] md:w-[70%] lg:w-[70%] p-5 user-form rounded'>
                         <h3 className='text-center mb-4 text-gray-800 text-left text-3xl'>Sign Up</h3>
-                        <input type="text" name='Username' value={signup.Username} onChange={(e)=> setSignup({...signup, Username:e.target.value})} id="sign-Username" className=' rounded-0 mb-3 text-gray-800 placeholder:text-gray-800' placeholder='Your Name' required />
+                        <input type="text" name='username' value={signup.username} onChange={(e)=> setSignup({...signup, username:e.target.value})} id="sign-username" className=' rounded-0 mb-3 text-gray-800 placeholder:text-gray-800' placeholder='Your Name' required />
                         <input type="email" name='email' value={signup.email} onChange={(e) => setSignup({...signup, email:e.target.value})} id="sign-email" className='placeholder:text-gray-800 mb-3 rounded-0' placeholder='Your Email' required />
                         <div className="show-div relative">
                             <input type={hide ? "password" : "text" } name='password' value={signup.password} onChange={(e) => setSignup({...signup, password:e.target.value})} id="sign-password" className='placeholder:text-gray-800 mb-3 rounded-0 ' rows="1" placeholder='Your Password' required />
                             <i  onClick={() => setHide(!hide)} className={`text-gray-800 fa-solid ${hide? "fa-eye-slash": "fa-eye"} absolute top-5 right-2`}></i>
                         </div>    
-                        <button type="submit" onClick={checkSignup} className='mt-2 py-1 px-3 rounded bg-[#f87777]'>Sign Up</button>
+                        <button type="submit"  className='mt-2 py-1 px-3 rounded bg-[#f87777]'>Sign Up</button>
                         <p className="text-gray-800 text-bold mt-2">* Please Login After Sign Up</p>
                         <br /> <a onClick={()=> setLogin(true)} className='text-gray-800 form-link underline ' htmlFor="#" >Already have an account? Login</a>
                         
