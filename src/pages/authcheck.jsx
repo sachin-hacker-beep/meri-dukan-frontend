@@ -78,9 +78,7 @@ function Authcheck() {
             if(res.status === 400 || res.status === 401 || res.status === 404){
                 alert(data.message);
             }
-            if(res.status === 405){
-                alert(data.message);
-            }
+            
         }
         catch(err){
             console.log("Error during Signin", err);
