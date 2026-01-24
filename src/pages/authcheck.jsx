@@ -19,7 +19,7 @@ function Authcheck() {
         try{
             const res = await fetch('https://meri-dukan-backend-2.onrender.com/User/SignUp',{
                 method: 'post',
-                credentials: 'include',
+                credentials: "include",
                 headers:{  
                     'Content-Type':'application/json'
                 },
@@ -57,7 +57,7 @@ function Authcheck() {
         try{
             const res = await fetch("https://meri-dukan-backend-2.onrender.com/User/login",{
                 method:"post",
-                credentials: 'include',
+                credentials: "include",
                 headers:{
                     'Content-Type':'application/json'
                 },

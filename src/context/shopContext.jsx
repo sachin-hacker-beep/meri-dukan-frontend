@@ -33,6 +33,7 @@ export const ShopContextProvider = ({children}) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                credentials: "include",
                 body: JSON.stringify({selectedSize}),
             });
             const data= await res.json();
