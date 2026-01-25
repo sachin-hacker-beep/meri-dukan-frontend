@@ -27,11 +27,13 @@ export const ShopContextProvider = ({children}) => {
          if(!selectedSize){
              alert("Please Select a Size")
          }
+         const token = localStorage.getItem("token"); 
         try{
             const res = await fetch('https://meri-dukan-backend-2.onrender.com/add/${fetchProduct._id}',{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({selectedSize}),
             });
