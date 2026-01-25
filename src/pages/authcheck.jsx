@@ -19,7 +19,6 @@ function Authcheck() {
         try{
             const res = await fetch('https://meri-dukan-backend-2.onrender.com/User/SignUp',{
                 method: 'post',
-                credentials: "include",
                 headers:{  
                     'Content-Type':'application/json'
                 },
@@ -32,6 +31,7 @@ function Authcheck() {
             const data = await res.json();
             if(res.status === 201){
                 alert(data.message);
+                localStorage.setItem("token", data.token);
                 setSignup({
                     username:"",
                     email:"",
@@ -57,7 +57,6 @@ function Authcheck() {
         try{
             const res = await fetch("https://meri-dukan-backend-2.onrender.com/User/login",{
                 method:"post",
-                credentials: "include",
                 headers:{
                     'Content-Type':'application/json'
                 },
@@ -69,10 +68,11 @@ function Authcheck() {
             const data = await res.json();
             if(res.status === 200){
                 alert(data.message);
+                localStorage.setItem("token", data.token);
                 setSignin({
                     email:"",
                     password:""
-                })
+                }) 
                 navigate('/');
             }
             if(res.status === 400 || res.status === 401 || res.status === 404){
