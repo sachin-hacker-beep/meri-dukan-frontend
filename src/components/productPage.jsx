@@ -14,7 +14,6 @@ function ProductPage() {
     useEffect(()=>{
       if(fetchProduct){
         setmainImage(assets[fetchProduct.image[0]]);
-        
       }
     }, [fetchProduct])
     if(!fetchProduct){
@@ -26,7 +25,7 @@ function ProductPage() {
         return;
       }   
       console.log("Adding to cart:", selectedSize); 
-      AddToCart(selectedSize);
+      AddToCart(selectedSize, fetchProduct);
       // localStorage.setItem("cartData", JSON.stringify({cartProduct:{ ...fetchProduct, selectedSize}}) );
     }
     // console.log(fetchProduct);

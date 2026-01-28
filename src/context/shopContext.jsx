@@ -4,14 +4,32 @@ export const ShopContextProvider = ({children}) => {
     const [products,setProducts] = useState([]);
     const [show, setShow] = useState(false);
     const [search, setSearch] = useState("");
-    const [cart, setCart] = useState(()=>{
-        const storedcart = localStorage.getItem("cartData");
-        return storedcart==[] || storedcart==null ? [] : JSON.parse(storedcart);
-    });
-
+    const [cart, setCart] = useState([]);
+    useEffect(()=>{
+    const fetchCart = async ()=>{
+            const token = localStorage.getItem("token");
+            const res= await fetch("https://meri-dukan-backend-2.onrender.com/cart",{
+                method : "GET",
+                headers:{
+                    "Content-Type":"application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+            const data = await res.json();
+            if(res.status === 400 || res.status === 401 || res.status === 404){
+                alert(data.message);
+                return;
+            }
+            if(data.length === 0){
+                return [];
+            }
+            setCart(data);
+        };
+        fetchCart();
+    },[])    
     useEffect(()=>{
         const fetchProduct = async ()=>{
-            try{
+           try{
                 const res = await fetch("https://meri-dukan-backend-2.onrender.com/products");
                 const data = await res.json();
                 setProducts(data); 
@@ -23,13 +41,22 @@ export const ShopContextProvider = ({children}) => {
         fetchProduct();
     }, []);
     
-     const AddToCart = async (selectedSize) =>{
-         if(!selectedSize){
-             alert("Please Select a Size")
-         }
-         const token = localStorage.getItem("token"); 
+     const AddToCart = async (selectedSize,fetchProduct) =>{
+        if (!fetchProduct || !fetchProduct._id) {
+            alert("Product not ready yet");
+            return;
+        }
+        if(!selectedSize){
+            alert("Please Select a Size");
+            return;
+        }
+        const token = localStorage.getItem("token");
+        if(!token){
+            alert("You need to be logged in to add items to the cart.");
+            return;
+        }
         try{
-            const res = await fetch('https://meri-dukan-backend-2.onrender.com/add/${fetchProduct._id}',{
+            const res = await fetch(`https://meri-dukan-backend-2.onrender.com/add/${fetchProduct._id}`,{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -49,8 +76,6 @@ export const ShopContextProvider = ({children}) => {
         catch(error){
             console.error("Error adding to cart:", error);
             }
-
-
         }
     // const AddToCart = (fetchProduct, selectedSize) =>{
     //     if(!selectedSize){
