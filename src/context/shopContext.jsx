@@ -26,7 +26,7 @@ export const ShopContextProvider = ({children}) => {
             setCart(data);
         };
         fetchCart();
-    },[])    
+    },[]);
     useEffect(()=>{
         const fetchProduct = async ()=>{
            try{
