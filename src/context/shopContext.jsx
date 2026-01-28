@@ -20,10 +20,8 @@ export const ShopContextProvider = ({children}) => {
                 alert(data.message);
                 return;
             }
-            if(data.length === 0){
-                return [];
-            }
-            setCart(data);
+            setCart(Array.isArray(data) ? data : []);
+
         };
         fetchCart();
     },[]);
