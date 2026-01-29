@@ -1,8 +1,8 @@
 import { useProduct } from "../context/shopContext"
 function TotalPrice() {
     const {cart} = useProduct();
-    let totalPrice=cart.reduce((total,item)=> total + (Number(item.price || 0) * Number(item.quantity || 0)), 0);
-    let Discount=`${totalPrice === 0 ? 0 : totalPrice<500 ? 50 : totalPrice<1000 ? 100 : 150}`;
+    let totalPrice=cart.reduce((total,item)=> total + (Number(item.productID.price || 0) * Number(item.quantity || 0)), 0);
+    let Discount=`${totalPrice === 0 ? 0 : totalPrice<500 ? 0 : totalPrice<1000 ? 50 : 100}`;
     let deliveryFee=`${totalPrice === 0 ? 0 : totalPrice<500 ? 40 : totalPrice<1000 ? 20 : 0}`;
 
   return(

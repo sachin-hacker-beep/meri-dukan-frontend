@@ -11,8 +11,8 @@ export const ShopContextProvider = ({children}) => {
             const res= await fetch("https://meri-dukan-backend-2.onrender.com/cart",{
                 method : "GET",
                 headers:{
-                    "Content-Type":"application/json",
-                    "Authorization": `Bearer ${token}`
+                    'Content-Type':'application/json',
+                    'Authorization':`Bearer ${token}`
                 }
             });
             const data = await res.json();
@@ -75,50 +75,29 @@ export const ShopContextProvider = ({children}) => {
             console.error("Error adding to cart:", error);
             }
         }
-    // const AddToCart = (fetchProduct, selectedSize) =>{
-    //     if(!selectedSize){
-    //         alert("Please Select a Size")
-    //     }
-    //     console.log(fetchProduct, selectedSize);
-        
-    //     setCart((prev) =>{ 
-    //         const existingData = prev.find((item)=> item._id === fetchProduct._id && item.selectedSize === selectedSize);
-    //         if(existingData){
-    //             console.log(existingData);
-                
-    //             return prev.map((item)=>{
-    //                 if(item._id === fetchProduct._id && item.selectedSize === selectedSize){
-    //                     return {...item, quantity: item.quantity + 1};
-    //                 }
-    //                 else{
-    //                     return {...item, quantity: item.quantity};
-    //                 }
-    //             });
-    //         }
-    //         else{
-    //             return [...prev, {...fetchProduct, quantity: 1, selectedSize: selectedSize}];
-    //         }
-    //     }
-    // );    // console.log(cart);
-    // }
-    const handleRemove = (removingID, chosenSize) => {
-  setCart(prev =>
-    prev
-      .map(item => {
-        if (item._id === removingID && item.selectedSize === chosenSize) {
-          // decrease quantity
-          if (item.quantity > 1) {
-            return { ...item, quantity: item.quantity - 1 };
-          }
-          // remove item if quantity is 1
-          return null;
+
+        const handleRemove= async (productID, selectedSize)=>{
+            const token = localStorage.getItem("token");
+            if(!token){
+                alert("You need to be logged in to remove items from the cart.");
+                return;
+            }
+            const res = await fetch(`https://meri-dukan-backend-2.onrender.com/cart/remove/${productID}/${selectedSize}`, {
+                method:"DELETE",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            const data = await res.json();
+            if(res.status === 200 || res.status === 201){
+                alert(data.message);
+            }
+            if(res.status === 404){
+                alert(data.message);
+            }
+            console.log("Remove from cart response:", data);
         }
-        return item;
-      })
-      .filter(Boolean) // remove nulls
-  );
-  console.log("removing id is ",removingID," chosen size is ",chosenSize);
-};
 
     useEffect(()=>{
         console.log("Cart updated:", cart);

@@ -22,9 +22,9 @@ function Cart() {
                 <article className='mb-2 flex flex-col gap-y-2'>
                     {cart.map((item, index) => (
                         <div className='flex border border-[#f7d7d7] py-1 w-full items-center' key={index}>
-                            <img className='w-28 ml-3'src={item.image?.[0]?assets[item.image[0]] : undefined} alt={item.name} />
+                            <img className='w-28 ml-3'src={item.productID.image?.[0]?assets[item.productID.image[0]] : undefined} alt={item.productID.name} />
                             <figure className="cart-detail flex w-auto  flex-col text-left ms-8 md:ms-0 md:flex-row md:justify-evenly items-start md:w-full">
-                                <div className='cart-product-details text-sm md:px-1 md:py-2 md:text-center'>{item.name}</div>
+                                <div className='cart-product-details text-sm md:px-1 md:py-2 md:text-center'>{item.productID.name}</div>
                                 <div className="sizes flex flex-col justify-center">
                                     <p className="cart-product-details text-sm hidden md:block w-full text-center">Size :-</p>
                                     <div className='cart-product-details md:py-2 md:py-2 w-full px-0 md:px-2 text-center md:pb-5'>{item.selectedSize}</div>
@@ -35,7 +35,7 @@ function Cart() {
                                 </div>    
                                 <div className="price flex  md:flex-col justify-center">
                                     <p className="cart-product-details text-sm w-full text-center hidden md:block">Price :-</p>
-                                    <p className='cart-product-details md:py-2 md:py-2 w-full md:px-2 text-center md:pb-5'>₹ {Number(item.price || 0) * Number(item.quantity || 0) }</p>
+                                    <p className='cart-product-details md:py-2 md:py-2 w-full md:px-2 text-center md:pb-5'>₹ {Number(item.productID.price || 0) * Number(item.quantity || 0) }</p>
                                 </div>
                                 <i onClick={()=>handleRemove(item._id, item.selectedSize)} className="delete-icon fa-solid fa-trash mt-3 text-gray-700 cursor-pointer"></i>
                             </figure>
